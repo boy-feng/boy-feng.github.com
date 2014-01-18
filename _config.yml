@@ -2,11 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://blog.sailing.com
+url: http://boy-feng.github.io
 title: 船长_Jerry的博客
 subtitle: 扬帆远航，开始崭新的征程
 author: 冯佳_Jerry
 simple_search: http://google.com/search
+weibo_share: true
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
@@ -69,8 +70,8 @@ github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
-twitter_tweet_button: true
+#twitter_user:
+#twitter_tweet_button: true
 
 # Google +1
 google_plus_one: false
