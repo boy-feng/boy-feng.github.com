@@ -4,7 +4,7 @@
   <title><![CDATA[船长_Jerry的博客]]></title>
   <link href="http://boy-feng.github.io/atom.xml" rel="self"/>
   <link href="http://boy-feng.github.io/"/>
-  <updated>2014-01-18T21:33:17+08:00</updated>
+  <updated>2014-01-18T21:54:12+08:00</updated>
   <id>http://boy-feng.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,5 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test Blog]]></title>
+    <link href="http://boy-feng.github.io/blog/2014/01/18/test-blog/"/>
+    <updated>2014-01-18T21:51:16+08:00</updated>
+    <id>http://boy-feng.github.io/blog/2014/01/18/test-blog</id>
+    <content type="html"><![CDATA[<h2>Share</h2>
+
+<p>这是我的第一篇博客,欢迎以后大家来访问</p>
+]]></content>
+  </entry>
   
 </feed>
