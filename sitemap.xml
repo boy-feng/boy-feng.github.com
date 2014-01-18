@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://boy-feng.github.io/blog/2014/01/18/test-blog/</loc>
+        <loc>http://blog.sailing.com/blog/2014/01/18/test-blog/</loc>
         <lastmod>2014-01-18T21:53:34+08:00</lastmod>
     </url>
     <url>
-        <loc>http://boy-feng.github.io/blog/archives/</loc>
+        <loc>http://blog.sailing.com/blog/archives/</loc>
         <lastmod>2014-01-18T21:53:34+08:00</lastmod>
     </url>
     <url>
-        <loc>http://boy-feng.github.io/</loc>
+        <loc>http://blog.sailing.com/</loc>
         <lastmod>2014-01-18T21:53:34+08:00</lastmod>
     </url>
     <url>
-        <loc>http://boy-feng.github.io/robots.txt</loc>
+        <loc>http://blog.sailing.com/robots.txt</loc>
         <lastmod>2014-01-18T21:09:02+08:00</lastmod>
     </url>
 </urlset>

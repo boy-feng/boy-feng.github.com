@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[船长_Jerry的博客]]></title>
-  <link href="http://boy-feng.github.io/atom.xml" rel="self"/>
-  <link href="http://boy-feng.github.io/"/>
-  <updated>2014-01-18T21:54:12+08:00</updated>
-  <id>http://boy-feng.github.io/</id>
+  <link href="http://blog.sailing.com/atom.xml" rel="self"/>
+  <link href="http://blog.sailing.com/"/>
+  <updated>2014-01-18T22:08:34+08:00</updated>
+  <id>http://blog.sailing.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[冯佳_Jerry]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Test Blog]]></title>
-    <link href="http://boy-feng.github.io/blog/2014/01/18/test-blog/"/>
+    <link href="http://blog.sailing.com/blog/2014/01/18/test-blog/"/>
     <updated>2014-01-18T21:51:16+08:00</updated>
-    <id>http://boy-feng.github.io/blog/2014/01/18/test-blog</id>
+    <id>http://blog.sailing.com/blog/2014/01/18/test-blog</id>
     <content type="html"><![CDATA[<h2>Share</h2>
 
 <p>这是我的第一篇博客,欢迎以后大家来访问</p>
