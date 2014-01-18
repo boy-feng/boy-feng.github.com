@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Test blog"
+date: 2014-01-18 21:51:16 +0800
+comments: true
+categories: 
+---
+##Share
+这是我的第一篇博客,欢迎以后大家来访问
