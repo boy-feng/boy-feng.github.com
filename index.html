@@ -9,7 +9,7 @@
   <meta name="author" content="船长_Jerry">
 
   
-  <meta name="description" content="很久之前就想搭建一个属于自己的blog，来分享自己成长路上的点点滴滴，最近看到了 Octopress，被他的风格深深吸引，简约大方，很符合我的口味 :)(:, 下面简单介绍一下它的安装过程（在 Mac 下，win 上没有尝试）： Github 帐号 因为我们的 blog 是托管在 github &hellip;">
+  <meta name="description" content="最近项目中需要实现类似通讯录那样按拼音进行排序以及索引列表的显示的功能，我这里使用了 PinYin4Objc 这个库来实现此功能。 PinYinObjc是一个效率很高的汉字转拼音类库，智齿简体和繁体中文，有如下特点： 1.效率高，使用数据缓存，第一次初始化以后，拼音数据存入文件缓存和内存缓存， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/24/pinyin-convert/">iOS 实现类似通讯录按拼音排序 - PinYin4Objc</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-24T10:15:15+08:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近项目中需要实现类似通讯录那样按拼音进行排序以及索引列表的显示的功能，我这里使用了 <code>PinYin4Objc</code> 这个库来实现此功能。</p>
+
+<p><code>PinYinObjc</code>是一个效率很高的汉字转拼音类库，智齿简体和繁体中文，有如下特点：</p>
+
+<p>1.效率高，使用数据缓存，第一次初始化以后，拼音数据存入文件缓存和内存缓存，后面转换效率大大提高；
+2.支持自定义格式化，拼音大小写等等；
+3.拼音数据完整，支持中文简体和繁体，与网络上流行的相关项目比，数据很全，几乎没有出现转换错误的问题。</p>
+
+<p>下载 <a href="https://github.com/kimziv/PinYin4Objc">PinYinObjc</a></p>
+
+<h1>项目中的实际应用</h1>
+
+<h3>项目需求：</h3>
+
+<p>显示一个成员列表，有一个是管理员要排在最上面，下面按照拼音排序实现索引列表，效果图如下：</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -284,6 +334,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/24/pinyin-convert/">iOS 实现类似通讯录按拼音排序 - PinYin4Objc</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/18/test-blog/">搭建 Octopress 博客</a>
