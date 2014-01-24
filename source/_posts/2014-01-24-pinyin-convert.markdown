@@ -4,6 +4,8 @@ title: "iOS 实现类似通讯录按拼音排序 - PinYin4Objc"
 date: 2014-01-24 10:15:15 +0800
 comments: true
 categories: iOS
+despription: iOS 实现了类似通讯录按拼音排序，索引显示的效果
+keywords: iOS,通讯录,排序,索引,拼音
 ---
 最近项目中需要实现类似通讯录那样按拼音进行排序以及索引列表的显示的功能，我这里使用了 `PinYin4Objc` 这个库来实现此功能。
 
@@ -18,6 +20,7 @@ categories: iOS
 #项目中的实际应用
 ###项目需求：
 显示一个班级的成员列表，有一个是管理员要排在最上面，下面按照拼音排序实现索引列表，效果图如下：
+<!--more-->
 
 ![image](http://boy-feng.github.io/blog/images/pinyin_convert_1.png)
 

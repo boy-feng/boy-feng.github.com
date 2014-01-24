@@ -21,6 +21,7 @@ categories:
 需要 ruby 和 git，Mac 上边是自带这两个工具的，在这里不做过多解释
 
 下面开始安装 Octopress
+<!--more-->
 
 ###一、将 Octopress 从github 上clone 到本地
 
