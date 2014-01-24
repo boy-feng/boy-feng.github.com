@@ -4,7 +4,7 @@
   <title><![CDATA[船长_Jerry的博客]]></title>
   <link href="http://boy-feng.github.io/atom.xml" rel="self"/>
   <link href="http://boy-feng.github.io/"/>
-  <updated>2014-01-24T15:17:09+08:00</updated>
+  <updated>2014-01-24T15:19:30+08:00</updated>
   <id>http://boy-feng.github.io/</id>
   <author>
     <name><![CDATA[船长_Jerry]]></name>
@@ -33,6 +33,9 @@
 <h3>项目需求：</h3>
 
 <p>显示一个班级的成员列表，有一个是管理员要排在最上面，下面按照拼音排序实现索引列表，效果图如下：</p>
+
+<!--more-->
+
 
 <p><img src="http://boy-feng.github.io/blog/images/pinyin_convert_1.png" alt="image" /></p>
 
