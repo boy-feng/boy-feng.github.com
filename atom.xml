@@ -4,7 +4,7 @@
   <title><![CDATA[船长_Jerry的博客]]></title>
   <link href="http://boy-feng.github.io/atom.xml" rel="self"/>
   <link href="http://boy-feng.github.io/"/>
-  <updated>2014-01-24T12:03:08+08:00</updated>
+  <updated>2014-01-24T15:17:09+08:00</updated>
   <id>http://boy-feng.github.io/</id>
   <author>
     <name><![CDATA[船长_Jerry]]></name>
@@ -186,6 +186,9 @@
 <p>需要 ruby 和 git，Mac 上边是自带这两个工具的，在这里不做过多解释</p>
 
 <p>下面开始安装 Octopress</p>
+
+<!--more-->
+
 
 <h3>一、将 Octopress 从github 上clone 到本地</h3>
 
