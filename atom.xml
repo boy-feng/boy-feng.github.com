@@ -4,7 +4,7 @@
   <title><![CDATA[船长_Jerry的博客]]></title>
   <link href="http://boy-feng.github.io/atom.xml" rel="self"/>
   <link href="http://boy-feng.github.io/"/>
-  <updated>2014-01-24T11:25:19+08:00</updated>
+  <updated>2014-01-24T12:03:08+08:00</updated>
   <id>http://boy-feng.github.io/</id>
   <author>
     <name><![CDATA[船长_Jerry]]></name>
@@ -32,7 +32,133 @@
 
 <h3>项目需求：</h3>
 
-<p>显示一个成员列表，有一个是管理员要排在最上面，下面按照拼音排序实现索引列表，效果图如下：</p>
+<p>显示一个班级的成员列表，有一个是管理员要排在最上面，下面按照拼音排序实现索引列表，效果图如下：</p>
+
+<p><img src="http://boy-feng.github.io/blog/images/pinyin_convert_1.png" alt="image" /></p>
+
+<h3>代码实现过程</h3>
+
+<p>查询数据库获取成员列表</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>//成员列表根据 isAdmin 字段进行排序查询——order by isAdmin
+</span><span class='line'>NSMutableArray *members = [[ASMemberDao sharedInstance] queryAllMembersByGroupId:groupId];
+</span><span class='line'>//根据排序查询结果第一个为管理员
+</span><span class='line'>ASContact *memeberAdmin = [members objectAtIndex:0];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>将每个成员的名字转化成拼音</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>//初始化HanyuPinyinOutputFormat对象，设置相应的 type
+</span><span class='line'>HanyuPinyinOutputFormat *outputFormat=[[HanyuPinyinOutputFormat alloc] init];
+</span><span class='line'>[outputFormat setToneType:ToneTypeWithoutTone];
+</span><span class='line'>[outputFormat setVCharType:VCharTypeWithV];
+</span><span class='line'>[outputFormat setCaseType:CaseTypeUppercase];
+</span><span class='line'>//遍历成员列表，将成员名字 contactName 转成拼音，并存放到 categoryName 字段中，用于排序
+</span><span class='line'>[members enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+</span><span class='line'>    ASContact *contact = (ASContact *)obj;
+</span><span class='line'>    NSString *outputPinyin=[PinyinHelper toHanyuPinyinStringWithNSString:contact.contactName withHanyuPinyinOutputFormat:outputFormat withNSString:@""];
+</span><span class='line'>    contact.categoryName = [outputPinyin uppercaseString];
+</span><span class='line'>}];
+</span><span class='line'>[outputFormat release];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>将成员列表按照拼音字段 categoryName进行排序</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"categoryName" ascending:YES];
+</span><span class='line'>NSArray *array = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+</span><span class='line'>[members sortUsingDescriptors:array];
+</span><span class='line'>[array release];
+</span><span class='line'>[sortDescriptor release];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>定义一个全局变量 dataDictionary 来组织数据结构</p>
+
+<p><code>key: 将汉字转完拼音后的第一个字母, 也就是上图 section 中的 A、B、C...</code></p>
+
+<p><code>value: 是一个成员数组，存放每个 section 下的成员列表</code></p>
+
+<p>如上图： A 是字典的一个 Key, 对应的 value 就是成员数组 {af1, af10},当然数组中存放的是成员对象。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>dataDictionary = [[NSMutableDictionary alloc] init];
+</span><span class='line'>//存放每个 section 下的成员数组
+</span><span class='line'>NSMutableArray *currentArray = nil;
+</span><span class='line'>//用于获取拼音中第一个字母
+</span><span class='line'>NSRange aRange = NSMakeRange(0, 1);
+</span><span class='line'>NSString *firstLetter = nil;
+</span><span class='line'>//遍历成员列表组织数据结构
+</span><span class='line'>for (ASContact *contact in members) {
+</span><span class='line'>    //如果是管理员，则暂时不放如 dataDictionary 中
+</span><span class='line'>    if (contact.isAdmin == 1) {
+</span><span class='line'>         continue;
+</span><span class='line'>    }
+</span><span class='line'>    //获取拼音中第一个字母，如果已经存在则直接将该成员加入到当前的成员数组中，如果不存在，创建成员数据，添加一个 key-value 结构到 dataDictionary 中
+</span><span class='line'>    firstLetter = [contact.categoryName substringWithRange:aRange];
+</span><span class='line'>    if ([dataDictionary objectForKey:firstLetter] == nil) {
+</span><span class='line'>        currentArray = [NSMutableArray array];
+</span><span class='line'>        [dataDictionary setObject:currentArray forKey:firstLetter];
+</span><span class='line'>    }
+</span><span class='line'>    [currentArray addObject:contact];
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在定义一个全局变量 <code>allKeys</code> 用于显示索引列表中索引</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>//取出 dataDictionary 中的 key 并进行排序
+</span><span class='line'>allKeys = [[NSMutableArray alloc] initWithArray:[[dataDictionary allKeys] sortedArrayUsingFunction:sortObjectsByKey context:NULL]];
+</span><span class='line'>//然后将管理员加入到排好序 allKeys 的最前面
+</span><span class='line'>[allKeys insertObject:@"管理员" atIndex:0];
+</span><span class='line'>[dataDictionary setObject:[NSArray arrayWithObjects:contactAdmin, nil] forKey:@"管理员"];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最后就是通过 <code>allKeys</code> 和 <code>dataDictionary</code> 进行配置一下 tableview 的各个代理就 OK 了，这里不在赘述</p>
+
+<p>希望对阅读本文的你有帮助</p>
 ]]></content>
   </entry>
   
